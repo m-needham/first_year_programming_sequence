@@ -1,0 +1,229 @@
+\documentclass[10pt]{article}
+
+
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{menukeys}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{datetime}
+\usepackage{hyperref}
+
+
+
+\usepackage{listings,lstautogobble}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\setlength{\parindent}{8pt}
+\usepackage{indentfirst}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codepurple},
+	keywordstyle=\color{NavyBlue},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize\bfseries,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=t,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\settimeformat{ampmtime}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue,
+}
+
+
+%==================================================
+% PAGE SETTING
+%==================================================
+\usepackage
+[
+letterpaper,        % US Letter Paper
+hmargin=0.5in, % Horizontal Margin
+vmargin=1in,     % Vertical Margin
+]
+{geometry}
+
+\pagestyle{fancy}
+
+%==================================================
+% GRAPHICS PATH
+%==================================================
+\graphicspath{{../figures/}} % this places all graphics in the figures subdirectory
+
+
+%==================================================
+% SPECIFY DOCUMENT TITLE, AUTHOR, AND OPTIONALLY
+% SPECIFY A DATE. 
+%
+% BY DEFAULT, "\today" UPDATES THE DATE
+% BASED ON THE CURRENT SYSTEM DATE
+%==================================================
+\title{Exercises: Conda and Jupyter}
+\author{Michael R. Needham}
+\date{\today}
+
+\raggedbottom
+
+
+\begin{document}
+	
+	%==================================================
+	% PLACE AUTHOR NAME IN UPPER LEFT CORNER, DOCUMENT
+	% TITLE IN UPPER RIGHT CORNER, AND DATE IN LOWER 
+	% RIGHT CORNER, ON EVERY PAGE
+	%==================================================
+	\lhead{\theauthor}
+	\rhead{\thetitle}
+	\rfoot{Last updated on \thedate \space at  \currenttime}
+	
+	\begin{center}
+		\textbf{\LARGE Exercises for Programming Session 1: }
+		
+		\textbf{\LARGE Conda Environments and Jupyter Notebooks}		
+	\end{center}
+
+	
+	\noindent
+	Work through these conda and Jupyter exercises here in-person, or at your own pace. For questions, please email Michael (\href{mailto:m.needham@colostate.edu}{m.needham@colostate.edu}). I recommend that you create a new folder to hold this work, as you will download several files over the course of these exercises.
+		\section{Install conda on your machine}
+
+\begin{itemize}
+\item Follow the instructions in the online \href{https://conda.io/projects/conda/en/latest/user-guide/install/index.html}{conda documentation} to install conda on your local machine.
+\item When the installation has completed, ensure it has installed correctly by printing out the version of conda to the terminal:
+\end{itemize}		
+
+		
+\begin{lstlisting}[language=Python]
+	USER$ conda --version
+	conda 4.11.0
+\end{lstlisting}
+	
+
+\section{Create a new conda environment from scratch}
+\begin{itemize}
+	\item From your terminal window create a new conda environment:
+\end{itemize}
+\begin{lstlisting}[language=bash]
+	USER$ conda create --name env_name
+\end{lstlisting}
+
+\begin{itemize}
+	\item All environments can be listed on your machine with:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+	USER$ conda env list
+	# conda environments:
+	#
+	env_name                 /path/to/env_name
+\end{lstlisting}
+
+\begin{itemize}
+	\item You can now activate this environment with:
+\end{itemize}
+
+
+\begin{lstlisting}[language=bash]
+	USER$ conda activate env_name
+	(env_name) USER$ 
+\end{lstlisting}
+
+\section{Install packages in your new environment}
+
+\begin{itemize}
+	\item Ensure you are in the correct environment by noticing the string in parenthesis at the beginning of your terminal prompt (see line 2 in the previous code block). Let's install a package:
+\end{itemize}
+
+	\begin{lstlisting}[language=bash]
+	(env_name) USER$ conda install numpy
+\end{lstlisting}
+
+\begin{itemize}
+	\item Your terminal will list a lot of output - most of this is not important to you unless you are concerned with particular package versions. Proceed by typing `y` for yes and hitting the enter key.
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+	Proceed ([y]/n)? y
+	...
+	Preparing transaction: done
+	Verifying transaction: done
+	Executing transaction: done
+	Retrieving notices: ...working... done
+	(env_name) USER$ 
+\end{lstlisting}
+
+\begin{itemize}
+	\item If you would like, you can list all packages currently installed in the active environment with:
+\end{itemize}
+\begin{lstlisting}[language=bash]
+	(env_name) USER$ conda list
+\end{lstlisting}
+
+	
+\section{Open a Jupyter Notebook from your environment and run cells}
+\begin{itemize}
+	\item Open a Jupyter notebook (you may have to \href{https://anaconda.org/anaconda/jupyter}{install Jupyter!}) with:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+	(env_name) USER$ jupyter notebook
+\end{lstlisting}
+
+\section{Troubleshoot missing packages}
+\begin{itemize}
+	\item Download the file \href{https://github.com/m-needham/first_year_programming_sequence/blob/main/1_conda_jupyter/squares.ipynb}{ \lstinline|squares.ipynb|} from my GitHub. First, select ``raw" to view the raw text, then save\footnote{On mac, this is easily done with \cmd S. Likely } this text to a local folder on your machine.
+	
+	\item Open \lstinline|squares.ipynb| in Jupyter Notebooks and run the entire notebook. If you are running from your newly created conda environment, you should get the error  \lstinline[language=Python]|ModuleNotFoundError: No module named 'matplotlib'|  after cell 4
+	
+	\item Fix this error by installing matplotlib with conda, restarting the kernel, and running all cells 
+	
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+	(env_name) USER$ conda install -c conda-forge matplotlib
+\end{lstlisting}
+
+\section{Create a new conda environment from an existing file}
+
+\begin{itemize}
+	\item Download the files \href{https://github.com/m-needham/first_year_programming_sequence/blob/main/1_conda_jupyter/environment.yml}{\lstinline|environment.yml|}, \href{https://github.com/m-needham/first_year_programming_sequence/blob/main/1_conda_jupyter/fibonacci.csv}{\lstinline|fibonacci.csv|}, and \href{https://github.com/m-needham/first_year_programming_sequence/blob/main/1_conda_jupyter/fibonacci.ipynb}{\lstinline|fibonacci.ipynb|} from the GitHub, as before. In your terminal, navigate to the folder holding \lstinline|environment.yml| and create a new conda environment using its contents: 
+\end{itemize}
+
+
+\begin{lstlisting}[language=bash]
+	(env_name) USER$ conda env create -f environment.yml 
+\end{lstlisting}
+
+\begin{itemize}
+	\item This will create a new conda environment \lstinline|shared_env| with the packages necessary\footnote{The only difference is that this one includes \href{https://pandas.pydata.org/}{\lstinline|pandas|} to read a \lstinline|csv| file more easily} to run \lstinline|fibonacci.ipynb|
+	\item Open \lstinline|Jupyter Notebooks| and ensure you can now run \lstinline|fibonacci.ipynb|
+\end{itemize}
+	
+	%\pagebreak
+	%\bibliography{bibfile}
+\end{document}
