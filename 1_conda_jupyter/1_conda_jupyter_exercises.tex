@@ -99,7 +99,7 @@ vmargin=1in,     % Vertical Margin
 	%==================================================
 	\lhead{\theauthor}
 	\rhead{\thetitle}
-	\rfoot{Last updated on \thedate \space at  \currenttime}
+	\rfoot{Updated on \thedate \space at  \currenttime}
 	
 	\begin{center}
 		\textbf{\LARGE Exercises for Programming Session 1: }
@@ -164,7 +164,7 @@ vmargin=1in,     % Vertical Margin
 \end{lstlisting}
 
 \begin{itemize}
-	\item Your terminal will list a lot of output - most of this is not important to you unless you are concerned with particular package versions. Proceed by typing `y` for yes and hitting the enter key.
+	\item Your terminal will list a lot of output - most of this is not important to you unless you are concerned with particular package versions. When prompted with ``\lstinline|Proceed ([y]/n)?|", proceed by typing `y' for yes and hitting the enter key.
 \end{itemize}
 
 \begin{lstlisting}[language=bash]
@@ -196,9 +196,9 @@ vmargin=1in,     % Vertical Margin
 
 \section{Troubleshoot missing packages}
 \begin{itemize}
-	\item Download the file \href{https://github.com/m-needham/first_year_programming_sequence/blob/main/1_conda_jupyter/squares.ipynb}{ \lstinline|squares.ipynb|} from my GitHub. First, select ``raw" to view the raw text, then save\footnote{On mac, this is easily done with \cmd S. Likely } this text to a local folder on your machine.
+	\item Download the file \href{https://github.com/m-needham/first_year_programming_sequence/blob/main/1_conda_jupyter/squares.ipynb}{ \lstinline|squares.ipynb|} from my GitHub. First, select ``raw" to view the raw text, then save\footnote{On mac, this is easily done with \cmd S. Likely is something similar on PC (CTRL-S?)} this text to a local folder on your machine.
 	
-	\item Open \lstinline|squares.ipynb| in Jupyter Notebooks and run the entire notebook. If you are running from your newly created conda environment, you should get the error  \lstinline[language=Python]|ModuleNotFoundError: No module named 'matplotlib'|  after cell 4
+	\item Open \lstinline|squares.ipynb| in Jupyter Notebooks and run the entire notebook. If you are running from your newly created conda environment, you should get the error  \lstinline[language=Python]|ModuleNotFoundError: No module named `matplotlib'|  after cell 4
 	
 	\item Fix this error by installing matplotlib with conda, restarting the kernel, and running all cells 
 	
